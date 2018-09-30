@@ -30,6 +30,7 @@ class Settings:
         self.gameActive = False
         self.playerScore = 0
         self.AIScore = 0
+        self.msg = " "
 
     def playerScored(self):
         self.playerScore += 1

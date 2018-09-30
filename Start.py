@@ -13,9 +13,9 @@ class Start():
 
         self.color = pongSettings.backgroundColor
 
-        self.prep_msg("PONG", "AI -- NO WALLS", "Points to win: 7")
+        self.prep_msg("PONG", "AI -- NO WALLS", "Points to win: 7", "Player Won!!! :)", "CPU Won !!! :(")
 
-    def prep_msg(self, msg, msg2, msg3):
+    def prep_msg(self, msg, msg2, msg3, msg4, msg5):
         self.font = pygame.font.SysFont(None, 200)
         self.msg_image = self.font.render(msg, True, self.text_color)
         self.msg_image_rect = self.msg_image.get_rect()
@@ -34,8 +34,24 @@ class Start():
         self.msg3_image_rect.center = self.rect.center
         self.msg3_image_rect.centery = self.rect.centery + 50
 
+        self.msg4_image = self.font.render(msg4, True, self.text_color)
+        self.msg4_image_rect = self.msg4_image.get_rect()
+        self.msg4_image_rect.center = self.rect.center
+        self.msg4_image_rect.centery = self.rect.centery - 50
+
+        self.msg5_image = self.font.render(msg5, True, self.text_color)
+        self.msg5_image_rect = self.msg5_image.get_rect()
+        self.msg5_image_rect.center = self.rect.center
+        self.msg5_image_rect.centery = self.rect.centery - 50
+
+
+
     def printStart(self):
         pygame.draw.rect(self.screen, self.color, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
         self.screen.blit(self.msg2_image, self.msg2_image_rect)
         self.screen.blit(self.msg3_image, self.msg3_image_rect)
+        if self.pongSettings.playerScore >= 7:
+            self.screen.blit(self.msg4_image, self.msg4_image_rect)
+        elif self.pongSettings.AIScore >= 7:
+            self.screen.blit(self.msg5_image, self.msg5_image_rect)

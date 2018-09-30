@@ -13,7 +13,6 @@ from Start import Start
 
 def runGame():
     pygame.init()
-    pygame.mixer.init()
     pongSettings = Settings()
     screen = pygame.display.set_mode((pongSettings.screenWidth, pongSettings.screenHeight))
     pygame.display.set_caption("Pong 2")
@@ -50,7 +49,6 @@ def runGame():
             paddle5.update(ball)
             paddle6.update(ball)
             ball.update()
-            gf.checkScore(pongSettings)
             gf.updateScreen(pongSettings, screen, paddle, paddle2, paddle3, paddle4, paddle5, paddle6, ball, divide, sb)
         else:
             gf.startGame(play_button, startScreen)
